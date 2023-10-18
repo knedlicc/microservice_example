@@ -43,9 +43,9 @@ services:
     depends_on:
         - storage
 
-  calculator:
+  vuecalc:
     build: ./calculator
-    container_name: calculator
+    container_name: vuecalc
     ports:
       - "2000:2000"
     environment:

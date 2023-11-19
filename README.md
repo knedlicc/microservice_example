@@ -1,4 +1,3 @@
-
 ## Getting started
 
 ### Run
@@ -9,7 +8,7 @@ In the root directory run the following command:
 docker-compose up
 ```
 
-Docker compose will start the following services: vuecalc(front-end), redis, storage, calc1, calc2, prometheus and grafana.
+Docker compose will start the following services: frontend(vuecalc), redis, storage, calc1, calc2, prometheus and grafana.
 Configuration of the services can be found in the docker-compose.yml file.
 
 ### Redis service

@@ -27,7 +27,7 @@ services:
     build: ./calc1
     container_name: calc1
     ports:
-      - "9000:9000"
+      - "9002:9002"
     environment:
       - STORAGE_URL=http://storage:8000
     depends_on:
@@ -43,8 +43,8 @@ services:
     depends_on:
         - storage
 
-  vuecalc:
-    build: ./calculator
+  ui:
+    build: ./vuecalc
     container_name: vuecalc
     ports:
       - "2000:2000"
@@ -62,7 +62,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./metrics/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./metrics_docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     depends_on:
       - storage
       - calc1
@@ -73,9 +73,9 @@ services:
     container_name: grafana
     ports:
       - "3000:3000"
-    restart: unless-stopped
+    restart: always
     volumes:
-      - ./metrics/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./metrics_docker/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
     depends_on:
       - storage
       - calc1

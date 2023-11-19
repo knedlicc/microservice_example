@@ -1,0 +1,57 @@
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  labels:
+#    run: prometheus
+#  name: prometheus
+#  namespace: default
+#spec:
+#  ports:
+#    - port: 80
+#      name: prometheus
+#      targetPort: 9090
+#  type: LoadBalancer
+#  selector:
+#    app: prometheus
+#---
+#apiVersion: apps/v1
+#kind: StatefulSet
+#metadata:
+#  labels:
+#    run: prometheus
+#  name: prometheus
+#  namespace: default
+#spec:
+#  selector:
+#    matchLabels:
+#      app: prometheus
+#  serviceName: prometheus
+#  replicas: 1
+#  template:
+#    metadata:
+#      labels:
+#        app: prometheus
+#    spec:
+#      containers:
+#        - name: prometheus
+#          image: knedlicc/agi36:prometheus
+#          imagePullPolicy: IfNotPresent
+#          ports:
+#            - containerPort: 9090
+#              name: prometheus
+#          volumeMounts:
+#            - name: prometheus-volume
+#              mountPath: /etc/prometheus
+##      volumes:
+##        - name: prometheus-config
+##          hostPath:
+##            path: /metrics/prometheus/
+#  volumeClaimTemplates:
+#    - metadata:
+#        name: prometheus-volume
+#      spec:
+#        accessModes: [ "ReadWriteOnce" ]
+#        resources:
+#          requests:
+#            storage: 50Mi

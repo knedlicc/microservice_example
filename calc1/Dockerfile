@@ -12,5 +12,5 @@ RUN mvn -f /home/app/pom.xml clean package
 FROM amazoncorretto:21-alpine-jdk
 WORKDIR /usr/spring/calc1
 COPY --from=build /home/app/target/calc1-0.0.1-SNAPSHOT.jar /usr/spring/calc1
-EXPOSE 9000
+EXPOSE 9002
 CMD ["java", "-jar", "calc1-0.0.1-SNAPSHOT.jar"]

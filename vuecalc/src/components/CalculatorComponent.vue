@@ -1,6 +1,6 @@
 <template>
   <div class="calculator">
-    <h1>Example Project</h1>
+    <h1>AGI Project</h1>
     <h2>Calculator</h2><br>
 
     <div class="container">

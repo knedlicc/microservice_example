@@ -42,7 +42,7 @@ public class RestController {
     @GetMapping("/sub")
     public float sub(float a, float b) {
         float result = a - b;
-        log.info("Sending substract operation to storage...");
+        log.info("Sending subtract operation to storage...");
         String res = storage.post().uri("/api/storage/create")
                 .bodyValue(new Operation(fmt(a), fmt(b), "-", fmt(result)))
                 .retrieve()
